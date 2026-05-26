@@ -14,7 +14,6 @@ window.PORTFOLIO_CONFIG = {
 
   stats: {
     featuredProjects: 6,
-    publications: 10,
     githubRepos: 24,
   },
 
@@ -43,8 +42,8 @@ window.PORTFOLIO_CONFIG = {
       items: ["DICOM", "7T MRI", "PET/MR", "XNAT", "Image Segmentation", "Biomarkers"],
     },
     {
-      category: "Tools",
-      items: ["Git", "Docker", "Supabase", "Qdrant", "Jupyter", "GitHub Actions"],
+      category: "Infrastructure",
+      items: ["Docker", "Supabase", "Qdrant", "GitHub Actions", "PostgreSQL"],
     },
   ],
 

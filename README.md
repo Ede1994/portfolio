@@ -8,8 +8,8 @@ Dark, minimal developer portfolio for [Eric Einspänner](https://github.com/Ede1
 
 - Dark-first responsive single-page layout
 - Featured projects with tech stack badges
-- Publications from Google Scholar with DOI links
-- Skills, stats, and contact sections
+- Professional tools & platforms grouped by category
+- Skills and contact sections
 - Typing animation, particle background, scroll reveal effects
 - Sticky navigation with active section highlighting
 
@@ -19,7 +19,7 @@ Edit the data files:
 
 - `js/config.js` — name, about, skills, links, stats
 - `js/projects.js` — featured and additional GitHub projects
-- `js/publications.js` — peer-reviewed publications
+- `js/tools.js` — professional tools and platforms
 
 ## Local preview
 

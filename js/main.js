@@ -1,7 +1,7 @@
 (function () {
   const config = window.PORTFOLIO_CONFIG;
   const projects = window.PORTFOLIO_PROJECTS;
-  const publications = window.PORTFOLIO_PUBLICATIONS;
+  const tools = window.PORTFOLIO_TOOLS;
 
   if (!config) return;
 
@@ -10,7 +10,7 @@
   renderAbout();
   renderFeaturedProjects();
   renderOtherProjects();
-  renderPublications();
+  renderTools();
   renderSkills();
   renderContact();
   initTypingEffect();
@@ -45,10 +45,10 @@
 
   function renderStats() {
     const grid = document.getElementById("stats-grid");
-    const pubCount = publications.length;
+    const toolCount = tools.reduce((sum, group) => sum + group.items.length, 0);
     const stats = [
       { value: config.stats.featuredProjects, label: "Featured projects" },
-      { value: pubCount, label: "Publications" },
+      { value: toolCount, label: "Tools & platforms" },
       { value: config.stats.githubRepos, label: "GitHub repos" },
     ];
 
@@ -143,46 +143,39 @@
     });
   }
 
-  function renderPublications() {
-    const list = document.getElementById("publications-list");
-    const sorted = [...publications].sort((a, b) => b.year - a.year);
+  function renderTools() {
+    const grid = document.getElementById("tools-grid");
 
-    sorted.forEach((pub) => {
-      const item = document.createElement("li");
-      item.className = "pub-item";
+    tools.forEach((group) => {
+      const section = document.createElement("div");
+      section.className = "tools-group";
 
-      const authorsHtml = pub.authors
-        .map((author) => {
-          const isSelf =
-            author.includes("Einspänner") || author.includes("Einspaenner");
-          return isSelf
-            ? `<span class="highlight">${escapeHtml(author)}</span>`
-            : escapeHtml(author);
+      const cards = group.items
+        .map((tool) => {
+          const tag = tool.url ? "a" : "div";
+          const href = tool.url
+            ? ` href="${escapeHtml(tool.url)}" target="_blank" rel="noopener noreferrer"`
+            : "";
+          const initial = escapeHtml(tool.name.charAt(0));
+
+          return `
+            <${tag} class="tool-card"${href}>
+              <span class="tool-icon" aria-hidden="true">${initial}</span>
+              <div class="tool-body">
+                <span class="tool-name">${escapeHtml(tool.name)}</span>
+                <span class="tool-desc">${escapeHtml(tool.description)}</span>
+              </div>
+            </${tag}>
+          `;
         })
-        .join(", ");
+        .join("");
 
-      const doiLink = pub.doi
-        ? `<a class="pub-doi" href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer">doi:${pub.doi}</a>`
-        : "";
-
-      const titleLink = pub.doi
-        ? `<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer">${escapeHtml(pub.title)}</a>`
-        : escapeHtml(pub.title);
-
-      item.innerHTML = `
-        <div class="pub-year">${pub.year}</div>
-        <div class="pub-body">
-          <h3 class="pub-title">${titleLink}</h3>
-          <p class="pub-authors">${authorsHtml}</p>
-          <p class="pub-journal"><em>${escapeHtml(pub.journal)}</em>${pub.volume ? ` · ${escapeHtml(pub.volume)}` : ""}${pub.pages ? ` · ${escapeHtml(pub.pages)}` : ""}</p>
-          <div class="pub-tags">
-            ${pub.topics.map((t) => `<span class="pub-tag">${escapeHtml(t)}</span>`).join("")}
-          </div>
-          ${doiLink}
-        </div>
+      section.innerHTML = `
+        <h3 class="tools-category">${escapeHtml(group.category)}</h3>
+        <div class="tools-cards">${cards}</div>
       `;
 
-      list.appendChild(item);
+      grid.appendChild(section);
     });
   }
 
