@@ -1,7 +1,7 @@
 (function () {
   const config = window.PORTFOLIO_CONFIG;
   const projects = window.PORTFOLIO_PROJECTS;
-  const tools = window.PORTFOLIO_TOOLS;
+  const techStack = window.PORTFOLIO_TECH_STACK;
 
   if (!config) return;
 
@@ -10,7 +10,7 @@
   renderAbout();
   renderFeaturedProjects();
   renderOtherProjects();
-  renderTools();
+  renderTechStack();
   renderSkills();
   renderContact();
   initTypingEffect();
@@ -45,10 +45,10 @@
 
   function renderStats() {
     const grid = document.getElementById("stats-grid");
-    const toolCount = tools.reduce((sum, group) => sum + group.items.length, 0);
+    const stackCount = techStack.reduce((sum, row) => sum + row.length, 0);
     const stats = [
       { value: config.stats.featuredProjects, label: "Featured projects" },
-      { value: toolCount, label: "Tools & platforms" },
+      { value: stackCount, label: "Technologies" },
       { value: config.stats.githubRepos, label: "GitHub repos" },
     ];
 
@@ -143,40 +143,60 @@
     });
   }
 
-  function renderTools() {
-    const grid = document.getElementById("tools-grid");
+  function renderTechStack() {
+    const container = document.getElementById("tech-stack");
+    if (!container || !techStack?.length) return;
 
-    tools.forEach((group) => {
-      const section = document.createElement("div");
-      section.className = "tools-group";
+    const pyramid = document.createElement("div");
+    pyramid.className = "tech-stack-pyramid";
+    pyramid.setAttribute("role", "list");
 
-      const cards = group.items
-        .map((tool) => {
-          const tag = tool.url ? "a" : "div";
-          const href = tool.url
-            ? ` href="${escapeHtml(tool.url)}" target="_blank" rel="noopener noreferrer"`
-            : "";
-          const initial = escapeHtml(tool.name.charAt(0));
+    techStack.forEach((row) => {
+      const rowEl = document.createElement("div");
+      rowEl.className = "tech-stack-row";
+      rowEl.setAttribute("role", "listitem");
 
-          return `
-            <${tag} class="tool-card"${href}>
-              <span class="tool-icon" aria-hidden="true">${initial}</span>
-              <div class="tool-body">
-                <span class="tool-name">${escapeHtml(tool.name)}</span>
-                <span class="tool-desc">${escapeHtml(tool.description)}</span>
-              </div>
-            </${tag}>
-          `;
-        })
-        .join("");
+      row.forEach((tech) => {
+        const tile = document.createElement("div");
+        tile.className = "tech-icon";
+        tile.setAttribute("role", "img");
+        tile.setAttribute("aria-label", tech.name);
+        tile.tabIndex = 0;
 
-      section.innerHTML = `
-        <h3 class="tools-category">${escapeHtml(group.category)}</h3>
-        <div class="tools-cards">${cards}</div>
-      `;
+        const label = document.createElement("span");
+        label.className = "tech-icon-label";
+        label.textContent = tech.name;
+        tile.appendChild(label);
 
-      grid.appendChild(section);
+        if (tech.icon) {
+          const img = document.createElement("img");
+          img.src = `https://cdn.simpleicons.org/${encodeURIComponent(tech.icon)}`;
+          img.alt = "";
+          img.loading = "lazy";
+          img.decoding = "async";
+          img.addEventListener("error", () => {
+            img.remove();
+            tile.insertBefore(createTechFallback(tech), label);
+          });
+          tile.appendChild(img);
+        } else {
+          tile.appendChild(createTechFallback(tech));
+        }
+
+        rowEl.appendChild(tile);
+      });
+
+      pyramid.appendChild(rowEl);
     });
+
+    container.appendChild(pyramid);
+  }
+
+  function createTechFallback(tech) {
+    const fallback = document.createElement("span");
+    fallback.className = "tech-icon-fallback";
+    fallback.textContent = tech.abbr || tech.name.charAt(0);
+    return fallback;
   }
 
   function renderSkills() {

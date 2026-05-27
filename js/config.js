@@ -27,23 +27,31 @@ window.PORTFOLIO_CONFIG = {
   skills: [
     {
       category: "Languages",
-      items: ["Python", "TypeScript", "JavaScript", "SQL", "MATLAB"],
+      items: ["Python", "TypeScript", "JavaScript", "C", "C++", "Kotlin", "Bash", "SQL", "MATLAB"],
     },
     {
       category: "Frontend",
-      items: ["React", "Next.js", "Angular", "Tailwind CSS", "React Native", "Expo"],
+      items: ["React", "Next.js", "Angular", "HTML", "CSS", "Tailwind CSS", "Bootstrap", "React Native", "Expo"],
     },
     {
       category: "Backend & AI",
-      items: ["FastAPI", "OpenAI API", "Claude", "RAG", "PyTorch", "scikit-learn"],
+      items: ["FastAPI", "Flask", "Django", "Node.js", "PyTorch", "TensorFlow", "scikit-learn", "OpenCV", "Hugging Face", "LangChain", "Claude Code", "Codex", "n8n", "RAG"],
+    },
+    {
+      category: "Data & Databases",
+      items: ["NumPy", "Pandas", "PostgreSQL", "Supabase", "MySQL", "MongoDB", "Redis", "Firebase"],
     },
     {
       category: "Medical Imaging",
       items: ["DICOM", "7T MRI", "PET/MR", "XNAT", "Image Segmentation", "Biomarkers"],
     },
     {
-      category: "Infrastructure",
-      items: ["Docker", "Supabase", "Qdrant", "GitHub Actions", "PostgreSQL"],
+      category: "Infrastructure & Systems",
+      items: ["Docker", "Podman", "Proxmox", "Linux", "macOS", "Windows", "AWS", "Azure", "Vercel", "GitHub Actions"],
+    },
+    {
+      category: "Productivity",
+      items: ["LaTeX", "MS Office", "Jupyter", "Figma", "Postman", "VS Code", "Cursor"],
     },
   ],
 

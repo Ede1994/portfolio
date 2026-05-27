@@ -508,84 +508,106 @@ main {
   content: " · ";
 }
 
-/* Tools */
-.tools-grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.tools-group {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.tools-category {
-  margin: 0;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-}
-
-.tools-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 0.75rem;
-}
-
-.tool-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1rem 1.1rem;
+/* Tech stack pyramid */
+.tech-stack {
+  position: relative;
+  padding: 2.5rem 1.25rem 2.75rem;
   border-radius: var(--radius);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  text-decoration: none;
-  color: inherit;
+  background:
+    linear-gradient(180deg, rgba(88, 28, 135, 0.22) 0%, rgba(30, 27, 75, 0.35) 55%, rgba(11, 13, 16, 0.5) 100%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(167, 139, 250, 0.18), transparent 70%);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  overflow: hidden;
+}
+
+.tech-stack::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.tech-stack-pyramid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tech-stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.tech-icon {
+  --tech-size: 3.1rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--tech-size);
+  height: var(--tech-size);
+  padding: 0.55rem;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: default;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease,
     background 0.22s ease;
 }
 
-a.tool-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+.tech-icon:hover,
+.tech-icon:focus-visible {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--accent-glow);
   border-color: var(--accent-glow);
-  background: var(--surface-hover);
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
 }
 
-.tool-icon {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.55rem;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 1rem;
+.tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tech-icon-fallback {
+  font-size: 0.85rem;
   font-weight: 600;
-}
-
-.tool-body {
-  min-width: 0;
-}
-
-.tool-name {
-  display: block;
-  font-weight: 600;
-  font-size: 0.95rem;
   color: var(--text);
-  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
 }
 
-.tool-desc {
-  display: block;
-  font-size: 0.84rem;
-  color: var(--text-muted);
-  line-height: 1.45;
+.tech-icon-label {
+  position: absolute;
+  bottom: calc(100% + 0.45rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(11, 13, 16, 0.92);
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.tech-icon:hover .tech-icon-label,
+.tech-icon:focus-visible .tech-icon-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Skills */
@@ -749,6 +771,15 @@ a.tool-card:hover {
 
   .hero {
     padding-top: 1.5rem;
+  }
+
+  .tech-icon {
+    --tech-size: 2.65rem;
+    padding: 0.45rem;
+  }
+
+  .tech-stack {
+    padding: 1.75rem 0.75rem 2rem;
   }
 }
 
