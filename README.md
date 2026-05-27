@@ -1,48 +1,74 @@
 # Developer Portfolio
 
-Dark, minimal developer portfolio for [Eric Einspänner](https://github.com/Ede1994) — medical physicist, clinical AI researcher, and software developer.
+A static, dark-themed developer portfolio you can host on GitHub Pages or any static file host. No build step - plain HTML, CSS, and JavaScript.
 
-**Live site:** https://ede1994.github.io/portfolio/
+## Quick start
 
-## Features
-
-- Dark-first responsive single-page layout
-- Featured projects with tech stack badges
-- Professional tools & platforms grouped by category
-- Skills and contact sections
-- Typing animation, particle background, scroll reveal effects
-- Sticky navigation with active section highlighting
+1. **Fork or clone** this repository.
+2. **Customize** your content (see below).
+3. **Preview locally**, then **deploy** when ready.
 
 ## Customize
 
-Edit the data files:
+All personal content lives in `js/`:
 
-- `js/config.js` — name, about, skills, links, stats
-- `js/projects.js` — featured and additional GitHub projects
-- `js/tools.js` — professional tools and platforms
+| File | Purpose |
+|------|---------|
+| `js/config.js` | Name, bio, skills, social links, stats |
+| `js/projects.js` | Featured and additional projects |
+| `js/tools.js` | Tools and platforms (grouped by category) |
+
+Update `index.html` for page title, meta description, and favicon (`assets/favicon.svg`). Styles are in `css/style.css`.
 
 ## Local preview
 
+From the repository root:
+
 ```bash
-cd portfolio
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080
+Open [http://localhost:8080](http://localhost:8080). Any static file server works (e.g. `npx serve .`).
 
-## Deploy to GitHub Pages
+## Deploy
 
-This repo deploys as a **project site** at `https://ede1994.github.io/portfolio/`.
+### GitHub Pages (recommended)
 
-1. Push to the `Ede1994/portfolio` repository on GitHub
-2. Go to **Settings → Pages → Build and deployment**
-3. Source: **Deploy from a branch**
-4. Branch: **main** / **/ (root)**
+1. Push the repo to GitHub.
+2. Open **Settings → Pages → Build and deployment**.
+3. Set **Source** to **Deploy from a branch**.
+4. Choose your default branch (e.g. `main`) and folder **/ (root)**.
 
-The site will be live within a few minutes.
+After a few minutes, the site is live. The URL depends on how you name the repository:
 
-## Related
+| Repository name | Site URL |
+|-----------------|----------|
+| `username.github.io` | `https://username.github.io/` (user or org site) |
+| Any other name (e.g. `portfolio`) | `https://username.github.io/portfolio/` (project site) |
 
-- Personal site: https://ede1994.github.io/
-- GitHub: https://github.com/Ede1994
-- Google Scholar: https://scholar.google.de/citations?user=pBNy9LwAAAAJ
+No `gh-pages` branch or build action is required — the site is served from the repo root.
+
+### Other hosts
+
+Upload the project root (or point the host at this folder). Ensure `index.html` is the default document. Works with Netlify, Cloudflare Pages, S3 + CloudFront, and similar static hosts.
+
+### Optional: `deploy.sh`
+
+`deploy.sh` is an example script that creates a GitHub repo, pushes `main`, and enables Pages via the GitHub API. Edit `REPO` and related values before use; it assumes macOS keychain credentials for GitHub.
+
+## Project layout
+
+```
+├── index.html      # Page structure and sections
+├── css/style.css   # Theme and layout
+├── js/
+│   ├── config.js   # Profile and site config
+│   ├── projects.js # Project cards
+│   ├── tools.js    # Tools / platforms
+│   └── main.js     # UI behavior (nav, animations, etc.)
+└── assets/         # Favicon and static assets
+```
+
+## License
+
+Use and adapt this project for your own portfolio. If you fork it, consider replacing branding and content in the files above before publishing.
