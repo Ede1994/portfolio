@@ -7,7 +7,6 @@
 
   populateHero();
   renderStats();
-  renderAbout();
   renderFeaturedProjects();
   renderOtherProjects();
   renderTechStack();
@@ -25,6 +24,32 @@
     document.getElementById("site-tagline").textContent = config.tagline;
     document.getElementById("site-location").textContent = config.location;
     document.title = `${config.name} · Developer Portfolio`;
+
+    const aboutEl = document.getElementById("about-text");
+    if (aboutEl && config.about) {
+      aboutEl.textContent = config.about;
+    }
+
+    const photoEl = document.getElementById("profile-photo");
+    if (photoEl && config.profilePhoto) {
+      photoEl.src = config.profilePhoto;
+    }
+
+    const profileLinks = document.getElementById("profile-links");
+    const profileLinkKeys = ["github", "linkedin", "scholar"];
+    profileLinkKeys.forEach((key) => {
+      const link = config.links[key];
+      if (!link || !profileLinks) return;
+
+      const anchor = document.createElement("a");
+      anchor.className = "profile-link";
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.title = link.label;
+      anchor.textContent = link.label;
+      profileLinks.appendChild(anchor);
+    });
 
     const cta = document.getElementById("hero-cta");
     const ctaKeys = config.heroCta || ["github", "scholar", "email"];
@@ -77,15 +102,6 @@
     );
 
     observer.observe(grid);
-  }
-
-  function renderAbout() {
-    const container = document.getElementById("about-content");
-    config.about.forEach((paragraph) => {
-      const p = document.createElement("p");
-      p.textContent = paragraph;
-      container.appendChild(p);
-    });
   }
 
   function renderFeaturedProjects() {

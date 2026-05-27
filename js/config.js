@@ -7,10 +7,9 @@ window.PORTFOLIO_CONFIG = {
   location: "Magdeburg, Germany",
   timezone: "Europe/Berlin",
 
-  about: [
-    "I'm a medical physicist and PhD researcher at the University Clinic for Neuroradiology in Magdeburg, working on clinical AI, ultra-high-field MRI, and quantitative biomarker analysis at Research Campus STIMULATE.",
-    "Alongside research, I build software — from full-stack clinical AI platforms and medical education tools to mobile apps and research group websites. I care about code that is useful in real clinical and scientific workflows.",
-  ],
+  about:
+    "Medical physicist who builds software for clinical AI and medical data — from neuroimaging pipelines to full-stack platforms.",
+  profilePhoto: "assets/profile.jpg",
 
   stats: {
     featuredProjects: 6,

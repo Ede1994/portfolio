@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Eric Einspänner — Developer portfolio. Medical physicist, clinical AI researcher, and software developer."
+      content="Eric Einspänner — Medical physicist building software for clinical AI and medical data."
     />
     <title>Eric Einspänner · Developer Portfolio</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -48,30 +48,46 @@
     </header>
 
     <main id="top">
-      <section class="hero">
-        <p class="hero-kicker">Developer Portfolio</p>
-        <h1 class="hero-name" id="site-name">Eric Einspänner</h1>
-        <p class="hero-tagline" id="site-tagline">
-          Medical physicist · Clinical AI · Neuroimaging
-        </p>
-        <p class="hero-typing">
-          <span id="typing-text"></span
-          ><span class="typing-cursor" aria-hidden="true">|</span>
-        </p>
-        <div class="hero-meta">
-          <span id="local-time" class="meta-chip">--:--</span>
-          <span id="site-location" class="meta-chip">Magdeburg, Germany</span>
+      <section class="hero" id="about">
+        <div class="hero-layout">
+          <aside class="profile-card">
+            <div class="profile-photo-wrap">
+              <img
+                class="profile-photo"
+                id="profile-photo"
+                src="assets/profile.jpg"
+                alt="Portrait of Eric Einspänner"
+                width="320"
+                height="320"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <h1 class="profile-name" id="site-name">Eric Einspänner</h1>
+            <p class="profile-bio" id="about-text"></p>
+            <nav class="profile-links" id="profile-links" aria-label="Social links"></nav>
+          </aside>
+
+          <div class="hero-main">
+            <p class="hero-kicker">Developer Portfolio</p>
+            <p class="hero-tagline" id="site-tagline">
+              Medical physicist · Clinical AI · Neuroimaging
+            </p>
+            <p class="hero-typing">
+              <span id="typing-text"></span
+              ><span class="typing-cursor" aria-hidden="true">|</span>
+            </p>
+            <div class="hero-meta">
+              <span id="local-time" class="meta-chip">--:--</span>
+              <span id="site-location" class="meta-chip">Magdeburg, Germany</span>
+            </div>
+            <div class="hero-cta" id="hero-cta"></div>
+          </div>
         </div>
-        <div class="hero-cta" id="hero-cta"></div>
       </section>
 
       <section class="stats" aria-label="Highlights">
         <div class="stats-grid" id="stats-grid"></div>
-      </section>
-
-      <section class="section" id="about">
-        <h2 class="section-title">About</h2>
-        <div class="about-content" id="about-content"></div>
       </section>
 
       <section class="section" id="projects">

@@ -223,10 +223,90 @@ main {
   color: var(--accent-dim);
 }
 
-/* Hero */
+/* Hero & profile */
 .hero {
-  padding: 3rem 0 2.5rem;
+  padding: 2.5rem 0 2rem;
   animation: fade-up 0.9s ease both;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.profile-card {
+  padding: 1.25rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: rgba(238, 242, 246, 0.96);
+  border: 1px solid rgba(238, 242, 246, 0.12);
+  box-shadow: var(--shadow);
+  color: #0b0d10;
+}
+
+.profile-photo-wrap {
+  position: relative;
+  margin-bottom: 1.1rem;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.35), rgba(167, 139, 250, 0.25));
+}
+
+.profile-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.profile-name {
+  margin: 0 0 0.65rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.profile-bio {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(11, 13, 16, 0.72);
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 13, 16, 0.12);
+  background: rgba(11, 13, 16, 0.04);
+  color: rgba(11, 13, 16, 0.82);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-link:hover {
+  color: #0b0d10;
+  background: rgba(45, 212, 191, 0.18);
+  border-color: rgba(45, 212, 191, 0.45);
+}
+
+.hero-main {
+  min-width: 0;
+  padding-top: 0.35rem;
 }
 
 .hero-kicker {
@@ -238,21 +318,8 @@ main {
   font-weight: 600;
 }
 
-.hero-name {
-  margin: 0;
-  font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2.8rem, 9vw, 4.8rem);
-  line-height: 1.05;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--text) 0%, var(--accent-dim) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .hero-tagline {
-  margin: 1rem 0 0.75rem;
+  margin: 0 0 0.75rem;
   font-size: 1.05rem;
   color: var(--text-muted);
 }
@@ -367,18 +434,6 @@ main {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-}
-
-/* About */
-.about-content p {
-  margin: 0 0 1rem;
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 68ch;
-}
-
-.about-content p:last-child {
-  margin-bottom: 0;
 }
 
 /* Projects */
@@ -771,6 +826,17 @@ main {
 
   .hero {
     padding-top: 1.5rem;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .profile-card {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .tech-icon {
