@@ -5,6 +5,7 @@
 
   if (!config) return;
 
+  initTheme();
   populateHero();
   renderStats();
   renderFeaturedProjects();
@@ -18,6 +19,28 @@
   initScrollAnimations();
   initActiveNav();
   initFloatingProfile();
+
+  function initTheme() {
+    const toggle = document.getElementById("theme-toggle");
+    if (!toggle) return;
+
+    function updateLabel(theme) {
+      toggle.setAttribute(
+        "aria-label",
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+      );
+    }
+
+    updateLabel(document.documentElement.dataset.theme || "light");
+
+    toggle.addEventListener("click", () => {
+      const next =
+        document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("theme", next);
+      updateLabel(next);
+    });
+  }
 
   function populateHero() {
     document.getElementById("site-name").textContent = config.name;
