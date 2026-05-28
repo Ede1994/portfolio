@@ -1,0 +1,195 @@
+/* Hidden off-screen on screen; shown only when printing */
+.resume-print {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 210mm;
+  background: #fff;
+  color: #111;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+
+.resume-print-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.resume-print-header {
+  margin-bottom: 1rem;
+}
+
+.resume-print-name {
+  margin: 0 0 0.2rem;
+  font-size: 22pt;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+.resume-print-tagline {
+  margin: 0 0 0.15rem;
+  font-size: 11pt;
+  color: #333;
+}
+
+.resume-print-location {
+  margin: 0 0 0.5rem;
+  font-size: 10pt;
+  color: #555;
+}
+
+.resume-print-contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+  font-size: 9.5pt;
+  color: #444;
+}
+
+.resume-print-contact li:not(:last-child)::after {
+  content: " · ";
+  color: #999;
+}
+
+.resume-print-contact a {
+  color: #222;
+  text-decoration: none;
+}
+
+.resume-print-section {
+  margin-top: 0.85rem;
+  break-inside: avoid;
+}
+
+.resume-print-section-title {
+  margin: 0 0 0.4rem;
+  padding-bottom: 0.2rem;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000;
+  border-bottom: 0.5pt solid #ccc;
+}
+
+.resume-print-summary {
+  margin: 0;
+  color: #222;
+}
+
+.resume-print-skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-print-skill-group {
+  margin: 0;
+}
+
+.resume-print-skill-category {
+  margin: 0 0 0.1rem;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #000;
+}
+
+.resume-print-skill-items {
+  margin: 0;
+  font-size: 9.5pt;
+  color: #444;
+}
+
+.resume-print-projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-print-project {
+  margin-bottom: 0.55rem;
+  break-inside: avoid;
+}
+
+.resume-print-project:last-child {
+  margin-bottom: 0;
+}
+
+.resume-print-project-title {
+  margin: 0 0 0.1rem;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #000;
+}
+
+.resume-print-project-desc {
+  margin: 0 0 0.15rem;
+  font-size: 9.5pt;
+  color: #333;
+}
+
+.resume-print-project-tech {
+  margin: 0 0 0.1rem;
+  font-size: 9pt;
+  font-style: italic;
+  color: #555;
+}
+
+.resume-print-project-url {
+  margin: 0;
+  font-size: 8.5pt;
+  color: #666;
+  word-break: break-all;
+}
+
+.resume-print-stack {
+  margin: 0;
+  font-size: 9.5pt;
+  color: #444;
+  line-height: 1.5;
+}
+
+.no-print {
+  /* screen-only hide handled in @media print below */
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-print {
+    position: static !important;
+    left: auto !important;
+    width: auto !important;
+    display: block !important;
+    background: #fff;
+    color: #111;
+  }
+
+  .resume-print a {
+    color: #222;
+    text-decoration: none;
+  }
+}

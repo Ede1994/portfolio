@@ -16,17 +16,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/resume-print.css" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="orbs" aria-hidden="true">
+    <div class="grain no-print" aria-hidden="true"></div>
+    <div class="orbs no-print" aria-hidden="true">
       <div class="orb orb--1"></div>
       <div class="orb orb--2"></div>
       <div class="orb orb--3"></div>
     </div>
-    <canvas id="particles" aria-hidden="true"></canvas>
+    <canvas id="particles" class="no-print" aria-hidden="true"></canvas>
 
-    <header class="site-nav" id="site-nav">
+    <header class="site-nav no-print" id="site-nav">
       <nav class="nav-dock" aria-label="Page sections">
         <a href="#about" class="nav-dock-link" aria-label="About">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -59,7 +60,7 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main id="top" class="no-print">
       <div class="page-layout">
         <aside class="profile-sidebar" aria-label="Profile">
           <div class="profile-card">
@@ -144,7 +145,7 @@
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer no-print">
       <p>
         <a href="https://ede1994.github.io/">Personal site</a>
         · Built with curiosity ·
@@ -152,9 +153,20 @@
       </p>
     </footer>
 
+    <button type="button" class="pdf-fab no-print" id="pdf-export-btn" aria-label="Export portfolio as PDF">
+      <svg class="pdf-fab-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v12" />
+        <path d="m7 10 5 5 5-5" />
+        <path d="M5 19h14" />
+      </svg>
+      <span class="pdf-fab-label">PDF</span>
+    </button>
+    <div id="resume-print" class="resume-print" aria-hidden="true"></div>
+
     <script src="js/config.js"></script>
     <script src="js/projects.js"></script>
     <script src="js/tech-stack.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/resume-print.js"></script>
   </body>
 </html>
