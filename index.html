@@ -27,30 +27,42 @@
     <canvas id="particles" aria-hidden="true"></canvas>
 
     <header class="site-nav" id="site-nav">
-      <a class="nav-logo" href="#top">EE</a>
-      <nav class="nav-links" aria-label="Page sections">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#stack">Stack</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+      <nav class="nav-dock" aria-label="Page sections">
+        <a href="#about" class="nav-dock-link" aria-label="About">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z" />
+          </svg>
+        </a>
+        <a href="#projects" class="nav-dock-link" aria-label="Projects">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z" />
+          </svg>
+        </a>
+        <a href="#skills" class="nav-dock-link" aria-label="Skills">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            <rect x="4" y="7" width="16" height="13" rx="2" />
+            <path d="M4 12h16" />
+          </svg>
+        </a>
+        <a href="#stack" class="nav-dock-link" aria-label="Tech stack">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z" />
+          </svg>
+        </a>
+        <a href="#contact" class="nav-dock-link" aria-label="Contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z" />
+          </svg>
+        </a>
       </nav>
-      <button
-        class="nav-toggle"
-        id="nav-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-      </button>
     </header>
 
     <main id="top">
-      <section class="hero" id="about">
-        <div class="hero-layout">
-          <aside class="profile-card">
+      <div class="page-layout">
+        <aside class="profile-sidebar" aria-label="Profile">
+          <div class="profile-card">
             <div class="profile-photo-wrap">
               <img
                 class="profile-photo"
@@ -66,9 +78,11 @@
             <h1 class="profile-name" id="site-name">Eric Einspänner</h1>
             <p class="profile-bio" id="about-text"></p>
             <nav class="profile-links" id="profile-links" aria-label="Social links"></nav>
-          </aside>
+          </div>
+        </aside>
 
-          <div class="hero-main">
+        <div class="page-content">
+          <section class="hero" id="about">
             <p class="hero-kicker">Developer Portfolio</p>
             <p class="hero-tagline" id="site-tagline">
               Medical physicist · Clinical AI · Neuroimaging
@@ -82,52 +96,52 @@
               <span id="site-location" class="meta-chip">Magdeburg, Germany</span>
             </div>
             <div class="hero-cta" id="hero-cta"></div>
-          </div>
+          </section>
+
+          <section class="stats" aria-label="Highlights">
+            <div class="stats-grid" id="stats-grid"></div>
+          </section>
+
+          <section class="section" id="projects">
+            <div class="section-header">
+              <h2 class="section-title">Featured Projects</h2>
+              <p class="section-subtitle">
+                Selected work at the intersection of medical imaging, AI, and software
+              </p>
+            </div>
+            <div class="project-grid" id="featured-projects"></div>
+          </section>
+
+          <section class="section" id="more-projects">
+            <div class="section-header">
+              <h2 class="section-title">More on GitHub</h2>
+              <p class="section-subtitle">Additional repositories and experiments</p>
+            </div>
+            <div class="repo-grid" id="other-projects"></div>
+          </section>
+
+          <section class="section" id="stack">
+            <div class="section-header">
+              <h2 class="section-title">Tech Stack</h2>
+              <p class="section-subtitle">
+                Languages, frameworks, and platforms I build and research with
+              </p>
+            </div>
+            <div class="tech-stack" id="tech-stack"></div>
+          </section>
+
+          <section class="section" id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid" id="skills-grid"></div>
+          </section>
+
+          <section class="section" id="contact">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Open to collaboration on clinical AI and medical imaging</p>
+            <nav class="contact-grid" id="contact-grid"></nav>
+          </section>
         </div>
-      </section>
-
-      <section class="stats" aria-label="Highlights">
-        <div class="stats-grid" id="stats-grid"></div>
-      </section>
-
-      <section class="section" id="projects">
-        <div class="section-header">
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">
-            Selected work at the intersection of medical imaging, AI, and software
-          </p>
-        </div>
-        <div class="project-grid" id="featured-projects"></div>
-      </section>
-
-      <section class="section" id="more-projects">
-        <div class="section-header">
-          <h2 class="section-title">More on GitHub</h2>
-          <p class="section-subtitle">Additional repositories and experiments</p>
-        </div>
-        <div class="repo-grid" id="other-projects"></div>
-      </section>
-
-      <section class="section" id="stack">
-        <div class="section-header">
-          <h2 class="section-title">Tech Stack</h2>
-          <p class="section-subtitle">
-            Languages, frameworks, and platforms I build and research with
-          </p>
-        </div>
-        <div class="tech-stack" id="tech-stack"></div>
-      </section>
-
-      <section class="section" id="skills">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid" id="skills-grid"></div>
-      </section>
-
-      <section class="section" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Open to collaboration on clinical AI and medical imaging</p>
-        <nav class="contact-grid" id="contact-grid"></nav>
-      </section>
+      </div>
     </main>
 
     <footer class="site-footer">

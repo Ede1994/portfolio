@@ -16,8 +16,8 @@
   initClock();
   initParticles();
   initScrollAnimations();
-  initNav();
   initActiveNav();
+  initFloatingProfile();
 
   function populateHero() {
     document.getElementById("site-name").textContent = config.name;
@@ -392,27 +392,9 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  function initNav() {
-    const toggle = document.getElementById("nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggle?.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      navLinks?.classList.toggle("open");
-    });
-
-    navLinks?.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        toggle?.setAttribute("aria-expanded", "false");
-        navLinks.classList.remove("open");
-      });
-    });
-  }
-
   function initActiveNav() {
-    const navLinks = document.querySelectorAll(".nav-links a");
-    const sections = document.querySelectorAll("section[id], main > section");
+    const navLinks = document.querySelectorAll(".nav-dock-link");
+    const sections = document.querySelectorAll("section[id], main .page-content > section");
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -431,6 +413,60 @@
     sections.forEach((section) => {
       if (section.id) observer.observe(section);
     });
+  }
+
+  function initFloatingProfile() {
+    const card = document.querySelector(".profile-card");
+    const sidebar = document.querySelector(".profile-sidebar");
+    const layout = document.querySelector(".page-layout");
+    if (!card || !sidebar || !layout) return;
+
+    const desktop = window.matchMedia("(min-width: 769px)");
+    let ticking = false;
+
+    function resetCardPosition() {
+      card.style.position = "";
+      card.style.top = "";
+      card.style.left = "";
+      card.style.width = "";
+      card.classList.remove("is-floating");
+    }
+
+    function update() {
+      ticking = false;
+
+      if (!desktop.matches) {
+        resetCardPosition();
+        return;
+      }
+
+      const sidebarRect = sidebar.getBoundingClientRect();
+      const layoutRect = layout.getBoundingClientRect();
+      const navHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--nav-height")
+      );
+      const offset = 20;
+      const preferredTop = navHeight + offset;
+      const cardHeight = card.offsetHeight;
+      const maxTop = layoutRect.bottom - cardHeight - offset;
+
+      card.style.position = "fixed";
+      card.style.left = `${sidebarRect.left}px`;
+      card.style.width = `${sidebarRect.width}px`;
+      card.style.top = `${Math.min(preferredTop, Math.max(preferredTop, maxTop))}px`;
+      card.classList.toggle("is-floating", window.scrollY > 80);
+    }
+
+    function scheduleUpdate() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    desktop.addEventListener("change", scheduleUpdate);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    scheduleUpdate();
   }
 
   function escapeHtml(text) {
