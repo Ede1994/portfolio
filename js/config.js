@@ -26,19 +26,19 @@ window.PORTFOLIO_CONFIG = {
   skills: [
     {
       category: "Languages",
-      items: ["Python", "TypeScript", "JavaScript", "C", "C++", "Kotlin", "Bash", "SQL", "MATLAB"],
+      items: ["Python", "TypeScript", "JavaScript", "C++", "Bash", "SQL", "MATLAB"],
     },
     {
       category: "Frontend",
-      items: ["React", "Next.js", "Angular", "HTML", "CSS", "Tailwind CSS", "Bootstrap", "React Native", "Expo"],
+      items: ["React", "Next.js", "Angular", "HTML", "CSS", "Tailwind CSS", "React Native", "Expo"],
     },
     {
       category: "Backend & AI",
-      items: ["FastAPI", "Flask", "Django", "Node.js", "PyTorch", "TensorFlow", "scikit-learn", "OpenCV", "Hugging Face", "LangChain", "Claude Code", "Codex", "n8n", "RAG"],
+      items: ["FastAPI", "Flask", "Node.js", "PyTorch", "TensorFlow", "scikit-learn", "OpenCV", "Hugging Face", "LangChain", "Claude Code", "Codex", "n8n", "RAG"],
     },
     {
       category: "Data & Databases",
-      items: ["NumPy", "Pandas", "PostgreSQL", "Supabase", "MySQL", "MongoDB", "Redis", "Firebase"],
+      items: ["NumPy", "Pandas", "PostgreSQL", "Supabase", "MySQL", "MongoDB", "Redis"],
     },
     {
       category: "Medical Imaging",
@@ -46,7 +46,7 @@ window.PORTFOLIO_CONFIG = {
     },
     {
       category: "Infrastructure & Systems",
-      items: ["Docker", "Podman", "Proxmox", "Linux", "macOS", "Windows", "AWS", "Azure", "Vercel", "GitHub Actions"],
+      items: ["Docker", "Podman", "Proxmox", "Linux", "macOS", "Windows", "Azure", "GitHub Actions"],
     },
     {
       category: "Productivity",
